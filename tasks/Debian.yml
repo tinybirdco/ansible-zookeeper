@@ -10,11 +10,9 @@
   tags: bootstrap
 
 - name: Apt install required system packages.
-  apt: pkg={{item}} state=installed
+  apt:
+    pkg: [zookeeper, zookeeperd]
   tags: bootstrap
-  with_items:
-    - zookeeper
-    - zookeeperd
 
 - name: Overwrite myid file.
   template: src=myid.j2 dest={{zookeeper_conf_dir}}/conf/myid force="{{ zookeeper_force_myid }}"
