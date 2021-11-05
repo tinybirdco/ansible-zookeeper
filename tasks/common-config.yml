@@ -15,3 +15,23 @@
 - name: Enable zookeeper service
   service: name=zookeeper enabled=yes
   tags: deploy
+
+- name: "Create zookeeper {{item}} directory."
+  file: path={{item}} state=directory owner=zookeeper group=zookeeper
+  tags: bootstrap
+  loop:
+    - "{{zookeeper_data_dir}}"
+    - "{{zookeeper_datalog_dir}}"
+    - "{{zookeeper_log_dir}}"
+
+- name: Write myid file.
+  template: src=myid.j2 dest={{zookeeper_data_dir}}/myid owner=zookeeper group=zookeeper force="{{ zookeeper_force_myid }}"
+  tags: deploy
+  notify:
+    - Restart zookeeper
+
+- name: Configure zookeeper zoo.cfg
+  template: src=zoo.cfg.j2 dest={{ zookeeper_conf_dir }}/conf/zoo.cfg owner=zookeeper group=zookeeper
+  tags: deploy
+  notify:
+    - Restart zookeeper
