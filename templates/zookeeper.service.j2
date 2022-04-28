@@ -1,4 +1,4 @@
-# {{ansible_managed}}
+# {{ ansible_managed }}
 
 [Unit]
 Description=ZooKeeper
@@ -9,7 +9,7 @@ Wants=network.target
 Type=simple
 User=zookeeper
 Group=zookeeper
-ExecStart={{zookeeper_dir}}/bin/zkServer.sh start-foreground
+ExecStart={{ zookeeper_dir }}/bin/zkServer.sh start-foreground
 Restart=always
 RestartSec=3
 

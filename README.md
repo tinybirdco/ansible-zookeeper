@@ -43,15 +43,15 @@ zookeeper_debian_apt_repositories:
   - repository_url: "ppa:ufscar/zookeeper"
     distro_version: "14.04"
 
-apt_cache_timeout: 3600
+zookeeper_apt_cache_timeout: 3600
 zookeeper_register_path_env: false
 
-client_port: 2181
-init_limit: 5
-sync_limit: 2
-tick_time: 2000
-zookeeper_autopurge_purgeInterval: 0
-zookeeper_autopurge_snapRetainCount: 10
+zookeeper_client_port: 2181
+zookeeper_init_limit: 5
+zookeeper_sync_limit: 2
+zookeeper_tick_time: 2000
+zookeeper_autopurge_purge_interval: 0
+zookeeper_autopurge_snap_retain_count: 10
 zookeeper_cluster_ports: "2888:3888"
 zookeeper_max_client_connections: 60
 

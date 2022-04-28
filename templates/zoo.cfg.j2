@@ -1,23 +1,23 @@
-tickTime={{ tick_time }}
+tickTime={{ zookeeper_tick_time }}
 dataDir={{ zookeeper_data_dir }}
 dataLogDir={{ zookeeper_datalog_dir }}
-clientPort={{ client_port }}
-initLimit={{ init_limit }}
-syncLimit={{ sync_limit }}
+clientPort={{ zookeeper_client_port }}
+initLimit={{ zookeeper_init_limit }}
+syncLimit={{ zookeeper_sync_limit }}
 maxClientCnxns={{ zookeeper_max_client_connections }}
-{% if zookeeper_autopurge_purgeInterval > 0 %}
-autopurge.purgeInterval={{ zookeeper_autopurge_purgeInterval }}
-autopurge.snapRetainCount={{ zookeeper_autopurge_snapRetainCount }}
+{% if zookeeper_autopurge_purge_interval > 0 %}
+autopurge.purgeInterval={{ zookeeper_autopurge_purge_interval }}
+autopurge.snapRetainCount={{ zookeeper_autopurge_snap_retain_count }}
 {% endif %}
 
 {% for server in zookeeper_hosts %}
 {% if server.host is defined %}
 {% if server.ip is defined %}
-server.{{server.id}}={{server.ip}}:{{zookeeper_cluster_ports}}
+server.{{ server.id }}={{ server.ip }}:{{ zookeeper_cluster_ports }}
 {% else %}
-server.{{server.id}}={{server.host}}:{{zookeeper_cluster_ports}}
+server.{{ server.id }}={{ server.host }}:{{ zookeeper_cluster_ports }}
 {% endif %}
 {% else %}
-server.{{loop.index}}={{server}}:{{zookeeper_cluster_ports}}
+server.{{ loop.index }}={{ server }}:{{ zookeeper_cluster_ports }}
 {% endif %}
 {% endfor %}
