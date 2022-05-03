@@ -44,3 +44,7 @@ zookeeper_env: {}
 
 # Controls Zookeeper myid generation
 zookeeper_force_myid: yes
+
+zookeeper_java_version: 11
+zookeeper_java_packages: ["openjdk-{{ zookeeper_java_version }}-jdk"]
+

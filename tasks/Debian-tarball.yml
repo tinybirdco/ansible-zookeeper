@@ -1,6 +1,8 @@
 ---
 - include_tasks: tarball.yml
 
+- include_tasks: Debian-java.yml
+
 - include_tasks: upstart.yml
   when: not zookeeper_debian_systemd_enabled
   tags: deploy

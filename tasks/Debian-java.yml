@@ -1,0 +1,6 @@
+---
+- name: Install java
+  apt:
+    name: "{{ zookeeper_java_packages }}"
+    state: present
+    update_cache: yes
